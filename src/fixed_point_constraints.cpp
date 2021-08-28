@@ -1,6 +1,5 @@
 #include <fixed_point_constraints.h>
 #include <algorithm>
-#include <iostream> // TODO remove
 
 void fixed_point_constraints(Eigen::SparseMatrixd &P, unsigned int q_size, const std::vector<unsigned int> indices) {
   P.resize(3*(q_size - indices.size()), q_size);
