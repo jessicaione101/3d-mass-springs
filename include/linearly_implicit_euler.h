@@ -1,6 +1,6 @@
 #include <Eigen/Dense>
 #include <Eigen/Sparse>
-#include<Eigen/SparseCholesky>
+#include <Eigen/SparseCholesky>
 #include <EigenTypes.h>
 
 //Input:
@@ -19,7 +19,23 @@ template<typename FORCE, typename STIFFNESS>
 inline void linearly_implicit_euler(Eigen::VectorXd &q, Eigen::VectorXd &qdot, double dt, 
                             const Eigen::SparseMatrixd &mass,  FORCE &force, STIFFNESS &stiffness, 
                             Eigen::VectorXd &tmp_force, Eigen::SparseMatrixd &tmp_stiffness) {
-    
-
-
+  Eigen::VectorXd f;
+  force(f, q, qdot);
+  Eigen::SparseMatrixd K;
+  stiffness(K, q, qdot);
+  
+  Eigen::SparseMatrixd A = mass - dt*dt*K;
+  Eigen::VectorXd b = mass*qdot + dt*f;
+  Eigen::SimplicialLDLT<Eigen::SparseMatrixd> solver;
+  
+  solver.compute(A);
+  if (solver.info() != Eigen::Success)
+    return;
+  
+  Eigen::VectorXd _qdot = solver.solve(b);
+  if (solver.info() != Eigen::Success)
+    return;
+  
+  qdot = _qdot;
+  q = q + dt*qdot;
 }
