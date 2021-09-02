@@ -1,5 +1,4 @@
 #include <find_min_vertices.h>
-#include <iostream>
 
 void find_min_vertices(std::vector<unsigned int> &indices, Eigen::Ref<const Eigen::MatrixXd> V, double tol) {
 
@@ -8,8 +7,6 @@ void find_min_vertices(std::vector<unsigned int> &indices, Eigen::Ref<const Eige
     for(unsigned int vi=0; vi<V.rows(); ++vi) {
         min_vertex = (V(vi,1) < min_vertex ? V(vi,1) : min_vertex);
     }
-
-    std::cout<<min_vertex<<"\n";
 
     for(unsigned int vi=0; vi<V.rows(); ++vi) {
 
