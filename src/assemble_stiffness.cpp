@@ -20,7 +20,7 @@ void assemble_stiffness(Eigen::SparseMatrixd &K, Eigen::Ref<const Eigen::VectorX
     q1(1) = q(v1*3 + 1);
     q1(2) = q(v1*3 + 2);
     
-    d2V_spring_particle_particle_dq2(H, q0, q1, l0(i),k);
+    d2V_spring_particle_particle_dq2(H, q0, q1, l0(i), k);
     
     int row, col;
     
