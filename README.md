@@ -1,3 +1,9 @@
+# Disclaimer
+
+This is my implementation of an assigment from the Physics-Based Animation course taught by Prof. David Levin at the University of Toronto. I didn't take this course and my implementation was not submitted for grading. The original material and references can be found at the [course website](https://github.com/dilevin/CSC417-physics-based-animation).
+
+- - -
+
 # Physics-Based Animation – Mass-Spring Systems on Three Dimensions
 
 > **To get started:** Clone this repository and all its [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) dependencies using:
